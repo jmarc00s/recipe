@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  handleClick(): void {
-    console.log('Button clicked!');
-  }
+  title = 'recipe-checkout';
 }

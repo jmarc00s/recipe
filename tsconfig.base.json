@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@recipe/button": ["libs/button/src/index.ts"],
+      "@recipe/toolbar": ["libs/toolbar/src/index.ts"],
+      "@recipe/ui": ["libs/ui/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

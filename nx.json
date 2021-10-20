@@ -27,12 +27,25 @@
     ]
   },
   "projects": {
+    "button": {
+      "tags": []
+    },
     "recipe-app": {
       "tags": []
     },
     "recipe-app-e2e": {
       "tags": [],
       "implicitDependencies": ["recipe-app"]
+    },
+    "recipe-checkout": {
+      "tags": []
+    },
+    "recipe-checkout-e2e": {
+      "tags": [],
+      "implicitDependencies": ["recipe-checkout"]
+    },
+    "toolbar": {
+      "tags": []
     }
   }
 }

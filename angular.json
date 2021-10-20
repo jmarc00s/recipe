@@ -1,6 +1,31 @@
 {
   "version": 1,
   "projects": {
+    "button": {
+      "projectType": "library",
+      "root": "libs/button",
+      "sourceRoot": "libs/button/src",
+      "prefix": "recipe",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/button"],
+          "options": {
+            "jestConfig": "libs/button/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/button/src/**/*.ts",
+              "libs/button/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "recipe-app": {
       "projectType": "application",
       "root": "apps/recipe-app",
@@ -21,7 +46,10 @@
               "apps/recipe-app/src/favicon.ico",
               "apps/recipe-app/src/assets"
             ],
-            "styles": ["apps/recipe-app/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/recipe-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -120,9 +148,154 @@
           }
         }
       }
+    },
+    "recipe-checkout": {
+      "projectType": "application",
+      "root": "apps/recipe-checkout",
+      "sourceRoot": "apps/recipe-checkout/src",
+      "prefix": "recipe",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/recipe-checkout",
+            "index": "apps/recipe-checkout/src/index.html",
+            "main": "apps/recipe-checkout/src/main.ts",
+            "polyfills": "apps/recipe-checkout/src/polyfills.ts",
+            "tsConfig": "apps/recipe-checkout/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/recipe-checkout/src/favicon.ico",
+              "apps/recipe-checkout/src/assets"
+            ],
+            "styles": ["apps/recipe-checkout/src/styles.scss", "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/recipe-checkout/src/environments/environment.ts",
+                  "with": "apps/recipe-checkout/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "recipe-checkout:build:production"
+            },
+            "development": {
+              "browserTarget": "recipe-checkout:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "recipe-checkout:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/recipe-checkout/src/**/*.ts",
+              "apps/recipe-checkout/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/recipe-checkout"],
+          "options": {
+            "jestConfig": "apps/recipe-checkout/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "recipe-checkout-e2e": {
+      "root": "apps/recipe-checkout-e2e",
+      "sourceRoot": "apps/recipe-checkout-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/recipe-checkout-e2e/cypress.json",
+            "devServerTarget": "recipe-checkout:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "recipe-checkout:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/recipe-checkout-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "toolbar": {
+      "projectType": "library",
+      "root": "libs/toolbar",
+      "sourceRoot": "libs/toolbar/src",
+      "prefix": "recipe",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/toolbar"],
+          "options": {
+            "jestConfig": "libs/toolbar/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/toolbar/src/**/*.ts",
+              "libs/toolbar/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
+    "analytics": "1581acad-cbe5-4bae-ac5a-e9b3a3542da7",
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
