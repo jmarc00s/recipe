@@ -1,0 +1,10 @@
+<section class="feed">
+  <h1 class="feed__title">Feed de receitas</h1>
+  <div class="feed__recipes">
+    <recipe-recipe-card
+      class="feed__recipe-card"
+      *ngFor="let recipe of recipes$ | async"
+      [recipe]="recipe"
+    ></recipe-recipe-card>
+  </div>
+</section>

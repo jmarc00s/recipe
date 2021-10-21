@@ -30,6 +30,9 @@
     "button": {
       "tags": []
     },
+    "models": {
+      "tags": []
+    },
     "recipe-app": {
       "tags": []
     },
@@ -43,6 +46,9 @@
     "recipe-checkout-e2e": {
       "tags": [],
       "implicitDependencies": ["recipe-checkout"]
+    },
+    "shared": {
+      "tags": []
     },
     "toolbar": {
       "tags": []

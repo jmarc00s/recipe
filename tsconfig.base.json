@@ -16,6 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@recipe/button": ["libs/button/src/index.ts"],
+      "@recipe/models": ["libs/models/src/index.ts"],
+      "@recipe/shared": ["libs/shared/src/index.ts"],
       "@recipe/toolbar": ["libs/toolbar/src/index.ts"],
       "@recipe/ui": ["libs/ui/src/index.ts"]
     }

@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from '@recipe/button';
 
 import { ToolbarModule } from '@recipe/toolbar';
+import { AppRoutesModule } from './app.routes.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { ToolbarModule } from '@recipe/toolbar';
     BrowserAnimationsModule,
     ButtonModule,
     ToolbarModule,
+    AppRoutesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
