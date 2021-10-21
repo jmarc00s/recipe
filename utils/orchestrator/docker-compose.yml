@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  recipe-app:
+    image: recipe-app
+    container_name: recipe-app
+
+  recipe-checkout:
+    image: recipe-checkout
+    container_name: recipe-checkout
+
+  orchestrator:
+    container_name: orchestrator
+    ports:
+      - 80:80
+    build:
+      context: .
